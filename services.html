@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Quad Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .container { max-width: 1280px; margin: auto; }
+    .gradient-text { background: linear-gradient(135deg, #0d9488, #0f766e); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .btn-primary { background: #0d9488; }
+    .btn-primary:hover { background: #0f766e; transform: translateY(-3px); }
+    .navbar-blur { backdrop-filter: blur(12px); background-color: rgba(255,255,255,0.95); }
+    .active-nav { color: #0d9488; font-weight: 600; position: relative; }
+    .active-nav::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 2px; background: #0d9488; }
+    .service-card { transition: all 0.4s ease; border: 1px solid #e2e8f0; background: white; }
+    .service-card:hover { transform: translateY(-6px); border-color: #0d9488; }
+    .section-padding { padding: 60px 0; }
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 768px) { .section-padding { padding: 40px 0; } }
+  </style>
+</head>
+<body>
+
+<nav class="fixed w-full z-50 navbar-blur shadow-sm"><div class="container mx-auto px-6 lg:px-12 py-3 flex justify-between items-center"><a href="home.html" class="text-2xl font-extrabold"><span class="text-teal-600">Quad</span><span class="text-gray-800">Solutions</span></a><div class="hidden lg:flex space-x-8"><a href="home.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="services.html" class="active-nav">Services</a><a href="process.html" class="nav-link">Process</a><a href="testimonials.html" class="nav-link">Testimonials</a><a href="contact.html" class="nav-link">Contact</a><a href="Faq.html" class="nav-link">FAQ</a><a href="blog.html" class="nav-link">Blog</a></div><div class="hidden lg:block"><a href="contact.html" class="btn-primary text-white px-4 py-1.5 rounded-full">Get Credentialed →</a></div><div class="lg:hidden"><button id="menuToggle" class="text-2xl"><i class="fas fa-bars"></i></button></div></div><div id="mobileMenu" class="hidden lg:hidden bg-white border-t py-4 px-6 flex flex-col space-y-3"><a href="index.html">Home</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="contact.html" class="bg-teal-600 text-white text-center py-2 rounded-full">Get Credentialed</a></div></nav>
+
+<main><section class="section-padding pt-32"><div class="container mx-auto px-6 lg:px-12 text-center"><h1 class="text-4xl font-bold">Our <span class="gradient-text">Services</span></h1><p class="text-gray-600 mt-2 max-w-2xl mx-auto">Comprehensive credentialing and revenue cycle solutions tailored for healthcare providers.</p></div></section>
+<section class="section-padding"><div class="container mx-auto px-6 lg:px-12"><div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><a href="provider-credentialing.html" class="service-card p-6 rounded-xl shadow-sm block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center bg-teal-100 text-teal-600 text-xl mb-3"><i class="fas fa-id-card"></i></div><h3 class="text-lg font-bold text-gray-900">Provider Credentialing</h3><p class="text-gray-500 text-sm">Complete primary source verification & payer enrollment.</p></a><a href="insurance-enrollment.html" class="service-card p-6 rounded-xl shadow-sm block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center bg-teal-100 text-teal-600 text-xl mb-3"><i class="fas fa-file-invoice-dollar"></i></div><h3 class="text-lg font-bold text-gray-900">Insurance Enrollment</h3><p class="text-gray-500 text-sm">Medicare, Medicaid, commercial contracting.</p></a><a href="medical-billing-support.html" class="service-card p-6 rounded-xl shadow-sm block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center bg-teal-100 text-teal-600 text-xl mb-3"><i class="fas fa-chart-line"></i></div><h3 class="text-lg font-bold text-gray-900">Medical Billing Support</h3><p class="text-gray-500 text-sm">Revenue cycle management & denial management.</p></a><a href="compliance-documentation.html" class="service-card p-6 rounded-xl shadow-sm block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center bg-teal-100 text-teal-600 text-xl mb-3"><i class="fas fa-gavel"></i></div><h3 class="text-lg font-bold text-gray-900">Compliance & Documentation</h3><p class="text-gray-500 text-sm">HIPAA, audit preparation, policies.</p></a><a href="caqh-management.html" class="service-card p-6 rounded-xl shadow-sm block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center bg-teal-100 text-teal-600 text-xl mb-3"><i class="fas fa-database"></i></div><h3 class="text-lg font-bold text-gray-900">CAQH Profile Management</h3><p class="text-gray-500 text-sm">End-to-end CAQH maintenance.</p></a><a href="credentialing-verification.html" class="service-card p-6 rounded-xl shadow-sm block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center bg-teal-100 text-teal-600 text-xl mb-3"><i class="fas fa-tachometer-alt"></i></div><h3 class="text-lg font-bold text-gray-900">Credentialing Verification</h3><p class="text-gray-500 text-sm">Primary source verification of licenses, education.</p></a></div></div></section></main>
+
+<footer class="bg-gray-900 text-gray-300 pt-10 pb-6"><div class="container mx-auto px-6 lg:px-12 text-center text-xs">© 2025 Quad Solutions. All rights reserved.</div></footer>
+<script>const toggleBtn=document.getElementById('menuToggle'),mobileMenu=document.getElementById('mobileMenu');if(toggleBtn)toggleBtn.addEventListener('click',()=>mobileMenu.classList.toggle('hidden'));const fadeElements=document.querySelectorAll('.fade-up');const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');})},{threshold:0.1});fadeElements.forEach(el=>observer.observe(el));</script>
+</body>
+</html>

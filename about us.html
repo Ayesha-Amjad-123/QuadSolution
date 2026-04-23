@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Quad Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { font-family: 'Inter', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+    body { overflow-x: hidden; background: #ffffff; }
+    .container { max-width: 1280px; margin: auto; }
+    .gradient-text { background: linear-gradient(135deg, #0d9488, #0f766e); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .btn-primary { background: #0d9488; transition: all 0.3s ease; }
+    .btn-primary:hover { background: #0f766e; transform: translateY(-3px); }
+    .btn-outline { border: 1.5px solid #0d9488; color: #0d9488; background: transparent; transition: all 0.3s ease; }
+    .btn-outline:hover { background: #0d9488; color: white; transform: translateY(-3px); }
+    .navbar-blur { backdrop-filter: blur(12px); background-color: rgba(255,255,255,0.95); border-bottom: 1px solid #e2e8f0; }
+    .active-nav { color: #0d9488; font-weight: 600; position: relative; }
+    .active-nav::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 2px; background: #0d9488; }
+    .section-padding { padding: 60px 0; }
+    .fade-up, .fade-left, .fade-right { opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up { transform: translateY(30px); }
+    .fade-left { transform: translateX(-30px); }
+    .fade-right { transform: translateX(30px); }
+    .fade-up.visible, .fade-left.visible, .fade-right.visible { opacity: 1; transform: translateX(0) translateY(0); }
+    .stat-card { transition: all 0.3s ease; border-bottom: 3px solid #0d9488; background: white; }
+    .counter-number { font-size: 2.2rem; font-weight: 800; color: #0d9488; }
+    .lead-input { border-radius: 8px; padding: 8px 12px; border: 1px solid #cbd5e1; width: 100%; }
+    .lead-submit { background: #0d9488; color: white; padding: 8px; border-radius: 8px; cursor: pointer; }
+    @media (max-width: 768px) { .section-padding { padding: 40px 0; } }
+  </style>
+</head>
+<body>
+
+<nav class="fixed w-full z-50 navbar-blur shadow-sm">
+  <div class="container mx-auto px-6 lg:px-12 py-3 flex justify-between items-center">
+    <a href="index.html" class="text-2xl font-extrabold"><span class="text-teal-600">Quad</span><span class="text-gray-800">Solutions</span></a>
+    <div class="hidden lg:flex space-x-8 text-gray-700 font-medium">
+      <a href="home.html" class="nav-link">Home</a><a href="about us.html" class="active-nav">About</a><a href="services.html" class="nav-link">Services</a><a href="process.html" class="nav-link">Process</a><a href="testimonials.html" class="nav-link">Testimonials</a><a href="contact.html" class="nav-link">Contact</a><a href="Faq.html" class="nav-link">FAQ</a><a href="blog.html" class="nav-link">Blog</a>
+    </div>
+    <div class="hidden lg:block"><a href="contact.html" class="btn-primary text-white px-4 py-1.5 rounded-full text-sm font-semibold">Get Credentialed →</a></div>
+    <div class="lg:hidden"><button id="menuToggle" class="text-gray-700 text-2xl"><i class="fas fa-bars"></i></button></div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t py-4 px-6 flex flex-col space-y-3 shadow-xl"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="contact.html" class="bg-teal-600 text-white text-center py-2 rounded-full">Get Credentialed</a></div>
+</nav>
+
+<main>
+  <section class="section-padding pt-32 bg-gradient-to-r from-teal-50 to-white"><div class="container mx-auto px-6 lg:px-12 text-center"><h1 class="text-4xl lg:text-5xl font-bold text-gray-900">About <span class="gradient-text">Quad Solutions</span></h1><p class="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">Empowering healthcare providers through seamless credentialing and compliance expertise.</p></div></section>
+  <section class="section-padding"><div class="container mx-auto px-6 lg:px-12"><div class="grid md:grid-cols-2 gap-12 items-center"><div class="fade-left"><img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Team" class="rounded-2xl shadow-lg"></div><div class="fade-right"><h2 class="text-2xl font-bold">Your Trusted Partner in Medical Credentialing</h2><p class="text-gray-600 mt-4">Founded by industry veterans, Quad Solutions has helped over 500 providers navigate the complex world of payer enrollment, CAQH, and compliance. Our mission is to reduce administrative burdens so you can focus on patient care.</p><p class="text-gray-600 mt-3">We stay ahead of regulatory changes, ensuring your practice remains compliant and profitable.</p><div class="mt-6 flex gap-4"><div class="stat-card p-4 rounded-lg text-center flex-1"><div class="counter-number" data-target="500">0</div><p class="text-sm">Providers</p></div><div class="stat-card p-4 rounded-lg text-center flex-1"><div class="counter-number" data-target="98">0</div><p class="text-sm">Success %</p></div></div></div></div></div></section>
+  <section class="bg-teal-50 section-padding"><div class="container mx-auto px-6 lg:px-12 text-center"><h2 class="text-2xl font-bold">Our Core Values</h2><div class="grid md:grid-cols-3 gap-8 mt-8"><div><i class="fas fa-handshake text-teal-600 text-4xl"></i><h3 class="font-bold mt-2">Integrity</h3><p class="text-gray-600">Honest, transparent processes.</p></div><div><i class="fas fa-chart-line text-teal-600 text-4xl"></i><h3 class="font-bold mt-2">Excellence</h3><p class="text-gray-600">First-time quality, always.</p></div><div><i class="fas fa-users text-teal-600 text-4xl"></i><h3 class="font-bold mt-2">Partnership</h3><p class="text-gray-600">Your success is ours.</p></div></div></div></section>
+  <section class="section-padding"><div class="container mx-auto px-6 lg:px-12 text-center"><h2 class="text-2xl font-bold">Leadership Team</h2><div class="grid md:grid-cols-2 gap-8 mt-8"><div><img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-32 h-32 rounded-full mx-auto"><h3 class="font-bold mt-2">Dr. Emily Hart</h3><p class="text-gray-600">CEO, 15+ years credentialing</p></div><div><img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-32 h-32 rounded-full mx-auto"><h3 class="font-bold mt-2">Michael Tran</h3><p class="text-gray-600">Director of Operations</p></div></div></div></section>
+  <section class="bg-teal-700 text-white py-12"><div class="container mx-auto px-6 text-center"><h2 class="text-2xl font-bold">Ready to work with us?</h2><a href="contact.html" class="btn-outline inline-block mt-4 bg-white text-teal-700 border-white hover:bg-teal-100 px-6 py-2 rounded-full">Get in touch</a></div></section>
+</main>
+
+<footer class="bg-gray-900 text-gray-300 pt-10 pb-6"><div class="container mx-auto px-6 lg:px-12 text-center text-xs">© 2025 Quad Solutions. All rights reserved.</div></footer>
+
+<script>
+  const toggleBtn = document.getElementById('menuToggle'), mobileMenu = document.getElementById('mobileMenu');
+  if(toggleBtn) toggleBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('.counter-number').forEach(counter => { const target = parseInt(counter.dataset.target); ScrollTrigger.create({ trigger: counter, start: "top 85%", once: true, onEnter: () => { let current = 0; const update = () => { if(current <= target) { counter.innerText = current; current += Math.ceil(target/40); setTimeout(update, 20); } else counter.innerText = target; }; update(); } }); });
+  const fadeElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right');
+  const observer = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+  fadeElements.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

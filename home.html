@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Quad Solutions | Medical Credentialing Experts</title>
+  <meta name="description" content="Quad Solutions provides expert medical credentialing, insurance enrollment, and compliance services for healthcare providers. Trusted by 500+ healthcare providers nationwide.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { font-family: 'Inter', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+    html { zoom: 1.05; }
+    body { overflow-x: hidden; background: #ffffff; scroll-behavior: smooth; }
+    .container { max-width: 1280px; margin-left: auto; margin-right: auto; }
+    h1, h2, h3, h4, p { margin-bottom: 0.5rem; }
+    .gradient-text { background: linear-gradient(135deg, #0d9488, #0f766e); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .btn-primary { background: #0d9488; transition: all 0.3s ease; box-shadow: 0 4px 14px 0 rgba(13,148,136,0.25); }
+    .btn-primary:hover { background: #0f766e; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(13,148,136,0.35); }
+    .btn-outline { border: 1.5px solid #0d9488; color: #0d9488; background: transparent; transition: all 0.3s ease; }
+    .btn-outline:hover { background: #0d9488; color: white; transform: translateY(-3px); }
+    .navbar-blur { backdrop-filter: blur(12px); background-color: rgba(255,255,255,0.95); border-bottom: 1px solid #e2e8f0; }
+    .active-nav { color: #0d9488; font-weight: 600; position: relative; }
+    .active-nav::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 2px; background: #0d9488; border-radius: 2px; }
+    .hero-section { min-height: 90vh; display: flex; align-items: center; background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #f0fdfa 100%); padding: 100px 0 60px; }
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+    .hero-left { animation: fadeInLeft 0.8s ease forwards; }
+    .hero-right { animation: fadeInRight 0.8s ease 0.2s forwards; opacity: 0; }
+    .stack-wrapper { display: flex; gap: 12px; height: 380px; align-items: center; justify-content: flex-start; flex-wrap: nowrap; background: white; border-radius: 24px; padding: 15px; box-shadow: 0 10px 25px -8px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; overflow-x: auto; }
+    .stack-panel { width: 75px; height: 350px; border-radius: 20px; overflow: hidden; cursor: pointer; transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1); position: relative; background: #1a1a2e; flex-shrink: 0; box-shadow: 0 5px 15px -5px rgba(0,0,0,0.15); }
+    .stack-panel img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: 0.5s ease; }
+    .stack-panel .overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); padding: 15px 12px; opacity: 0; transition: 0.4s ease; }
+    .stack-panel .overlay span { color: white; font-weight: 600; font-size: 12px; display: flex; align-items: center; gap: 6px; }
+    .stack-panel.active { width: 280px; }
+    .stack-panel.active .overlay { opacity: 1; }
+    .stack-panel.active img { filter: brightness(1); }
+    .sphere { position: relative; width: 350px; height: 350px; margin: 0 auto; transform-style: preserve-3d; opacity: 0; transform: scale(0.75); transition: 1s ease; }
+    .sphere.active { opacity: 1; transform: scale(1); }
+    .globe-icon { position: absolute; top: 50%; left: 50%; font-size: 40px; transform-style: preserve-3d; filter: drop-shadow(0 3px 8px rgba(0,0,0,0.15)); transition: transform 0.2s ease, opacity 0.25s ease; cursor: pointer; will-change: transform, opacity; }
+    .globe-icon:hover { transform: scale(1.2) translate3d(var(--x, 0), var(--y, 0), var(--z, 0)) !important; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.3)); z-index: 100; }
+    .service-card { transition: all 0.4s ease; border: 1px solid #e2e8f0; background: white; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1); border-color: #0d9488; }
+    .service-icon { background: #ccfbf1; transition: all 0.3s ease; }
+    .service-card:hover .service-icon { background: #0d9488; color: white; transform: scale(1.03); }
+    .stat-card { transition: all 0.3s ease; border-bottom: 3px solid #0d9488; background: white; }
+    .stat-card:hover { transform: translateY(-4px); border-bottom-color: #0f766e; }
+    .counter-number { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #0d9488; }
+    .testimonial-card { transition: all 0.3s ease; background: white; }
+    .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1); }
+    .fade-up, .fade-left, .fade-right, .zoom-in { opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up { transform: translateY(30px); }
+    .fade-left { transform: translateX(-30px); }
+    .fade-right { transform: translateX(30px); }
+    .zoom-in { transform: scale(0.96); }
+    .fade-up.visible, .fade-left.visible, .fade-right.visible, .zoom-in.visible { opacity: 1; transform: translateX(0) translateY(0) scale(1); }
+    .section-padding { padding: 60px 0; }
+    .trust-badge-item { display: flex; align-items: center; gap: 4px; }
+    .trust-badge-icon { color: #0d9488; font-size: 14px; }
+    .trust-badge-text { color: #4b5563; font-size: 14px; font-weight: 500; }
+    .feature-item { display: flex; gap: 12px; }
+    .lead-input { border-radius: 8px; padding: 8px 12px; color: #111827; font-size: 14px; outline: none; width: 100%; border: 1px solid #cbd5e1; }
+    .lead-input:focus { ring: 2px solid #5eead4; }
+    .lead-submit { background: white; color: #0f766e; font-weight: 600; padding: 8px 0; border-radius: 8px; transition: background 0.2s; border: none; cursor: pointer; font-size: 14px; width: 100%; }
+    .lead-submit:hover { background: #f3f4f6; }
+    @media (max-width: 1024px) { .stack-wrapper { height: 320px; gap: 10px; } .stack-panel { height: 290px; width: 65px; } .stack-panel.active { width: 240px; } .sphere { width: 300px; height: 300px; } .globe-icon { font-size: 34px; } .counter-number { font-size: 2rem; } .section-padding { padding: 50px 0; } .hero-section { min-height: auto; padding: 100px 0 50px; } }
+    @media (max-width: 768px) { .stack-wrapper { flex-wrap: nowrap; overflow-x: auto; height: auto; gap: 10px; justify-content: flex-start; padding: 12px; } .stack-panel { width: 85px; height: 160px; flex-shrink: 0; } .stack-panel.active { width: 200px; } .stack-panel .overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 10px; } .stack-panel .overlay span { font-size: 9px; } .sphere { width: 250px; height: 250px; } .globe-icon { font-size: 28px; } .hero-section { padding: 90px 0 40px; } .section-padding { padding: 40px 0; } }
+  </style>
+</head>
+<body>
+
+<nav class="fixed w-full z-50 navbar-blur shadow-sm">
+  <div class="container mx-auto px-6 lg:px-12 py-3 flex justify-between items-center">
+    <a href="index.html" class="text-2xl font-extrabold tracking-tight"><span class="text-teal-600">Quad</span><span class="text-gray-800">Solutions</span></a>
+    <div class="hidden lg:flex space-x-8 text-gray-700 font-medium">
+      <a href="home.html" class="active-nav">Home</a>
+      <a href="about us.html" class="nav-link">About</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="process.html" class="nav-link">Process</a>
+      <a href="testimonials.html" class="nav-link">Testimonials</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+    </div>
+    <div class="hidden lg:block"><a href="contact.html" class="btn-primary text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-md">Get Credentialed →</a></div>
+    <div class="lg:hidden"><button id="menuToggle" class="text-gray-700 text-2xl"><i class="fas fa-bars"></i></button></div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t py-4 px-6 flex flex-col space-y-3 shadow-xl">
+    <a href="home.html">Home</a><a href="services.html">Services</a><a href="process.html">Process</a><a href="testimonials.html">Testimonials</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a>
+    <a href="contact.html" class="bg-teal-600 text-white text-center py-2 rounded-full font-semibold">Get Credentialed</a>
+  </div>
+</nav>
+
+<main>
+  <section class="hero-section">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="hero-left text-center lg:text-left">
+          <div class="inline-block bg-teal-100 text-teal-700 px-4 py-1 rounded-full text-sm font-semibold mb-4"><i class="fas fa-star-of-life mr-1"></i> Trusted Medical Credentialing Since 2015</div>
+          <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">Get Credentialed Faster with <span class="gradient-text">Quad Solutions</span></h1>
+          <p class="text-gray-600 text-base mt-4 max-w-xl mx-auto lg:mx-0">We simplify provider credentialing, insurance enrollment, and compliance so you can focus on patient care. Trusted by 500+ healthcare providers nationwide.</p>
+          <div class="mt-6 flex flex-wrap gap-3 justify-center lg:justify-start"><a href="contact.html" class="btn-primary text-white px-6 py-2.5 rounded-full font-semibold shadow-lg inline-flex items-center gap-2">Start Credentialing <i class="fas fa-arrow-right"></i></a><a href="#stack-slider" class="btn-outline px-6 py-2.5 rounded-full font-semibold inline-flex items-center gap-2">Explore Services <i class="fas fa-play-circle"></i></a></div>
+          <div class="mt-8 flex flex-wrap gap-6 justify-center lg:justify-start"><div class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-600"></i><span class="text-gray-600 text-sm">98% Success Rate</span></div><div class="flex items-center gap-2"><i class="fas fa-clock text-teal-600"></i><span class="text-gray-600 text-sm">30-Day Average</span></div><div class="flex items-center gap-2"><i class="fas fa-shield-alt text-teal-600"></i><span class="text-gray-600 text-sm">HIPAA Compliant</span></div><div class="flex items-center gap-2"><i class="fas fa-users text-teal-600"></i><span class="text-gray-600 text-sm">500+ Providers</span></div></div>
+        </div>
+        <div class="hero-right"><div class="sphere" id="heroSphere"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-4 bg-white border-y border-gray-100"><div class="container mx-auto px-6 lg:px-12"><div class="flex flex-wrap justify-center gap-6 md:gap-10 fade-up"><div class="trust-badge-item"><i class="fas fa-certificate trust-badge-icon"></i><span class="trust-badge-text">NCCB Certified</span></div><div class="trust-badge-item"><i class="fas fa-shield-alt trust-badge-icon"></i><span class="trust-badge-text">HIPAA Compliant</span></div><div class="trust-badge-item"><i class="fas fa-star-of-life trust-badge-icon"></i><span class="trust-badge-text">NCQA Standards</span></div><div class="trust-badge-item"><i class="fas fa-lock trust-badge-icon"></i><span class="trust-badge-text">Data Secure</span></div><div class="trust-badge-item"><i class="fas fa-trophy trust-badge-icon"></i><span class="trust-badge-text">A+ Rated</span></div></div></div></section>
+
+  <section id="services" class="section-padding bg-white"><div class="container mx-auto px-6 lg:px-12"><div class="text-center max-w-2xl mx-auto mb-10"><span class="text-teal-600 font-semibold text-xs uppercase">What We Do</span><h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mt-2 fade-up">Comprehensive <span class="gradient-text">Credentialing Services</span></h2><p class="text-gray-600 mt-3 fade-up text-sm">End-to-end solutions for healthcare providers to get in-network and start seeing patients faster.</p></div><div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><a href="provider-credentialing.html" class="service-card p-6 rounded-xl shadow-sm fade-left block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center text-teal-600 text-xl mb-3"><i class="fas fa-id-card"></i></div><h3 class="text-lg font-bold text-gray-900">Provider Credentialing</h3><p class="text-gray-500 text-sm mt-1">Complete primary source verification, CAQH management, and payer enrollment.</p></a><a href="insurance-enrollment.html" class="service-card p-6 rounded-xl shadow-sm fade-up block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center text-teal-600 text-xl mb-3"><i class="fas fa-file-invoice-dollar"></i></div><h3 class="text-lg font-bold text-gray-900">Insurance Enrollment</h3><p class="text-gray-500 text-sm mt-1">Medicare, Medicaid, and commercial payer contracting.</p></a><a href="medical-billing-support.html" class="service-card p-6 rounded-xl shadow-sm fade-right block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center text-teal-600 text-xl mb-3"><i class="fas fa-chart-line"></i></div><h3 class="text-lg font-bold text-gray-900">Medical Billing Support</h3><p class="text-gray-500 text-sm mt-1">Revenue cycle management, claims submission, denial management.</p></a><a href="compliance-documentation.html" class="service-card p-6 rounded-xl shadow-sm fade-left block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center text-teal-600 text-xl mb-3"><i class="fas fa-gavel"></i></div><h3 class="text-lg font-bold text-gray-900">Compliance & Documentation</h3><p class="text-gray-500 text-sm mt-1">HIPAA compliance, audit preparation, policy development.</p></a><a href="caqh-management.html" class="service-card p-6 rounded-xl shadow-sm fade-up block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center text-teal-600 text-xl mb-3"><i class="fas fa-database"></i></div><h3 class="text-lg font-bold text-gray-900">CAQH Profile Management</h3><p class="text-gray-500 text-sm mt-1">Complete CAQH application, attestation, ongoing maintenance.</p></a><a href="credentialing-verification.html" class="service-card p-6 rounded-xl shadow-sm fade-right block no-underline"><div class="service-icon w-12 h-12 rounded-lg flex items-center justify-center text-teal-600 text-xl mb-3"><i class="fas fa-tachometer-alt"></i></div><h3 class="text-lg font-bold text-gray-900">Credentialing Verification</h3><p class="text-gray-500 text-sm mt-1">Primary source verification for licenses, education, work history.</p></a></div></div></section>
+
+  <section class="py-12 bg-teal-50"><div class="container mx-auto px-6 lg:px-12"><div class="grid grid-cols-2 md:grid-cols-4 gap-5 text-center"><div class="stat-card p-4 rounded-lg zoom-in"><div class="counter-number" data-target="500">0</div><p class="text-gray-500 text-sm mt-1">Providers Credentialed</p></div><div class="stat-card p-4 rounded-lg zoom-in"><div class="counter-number" data-target="98">0</div><p class="text-gray-500 text-sm mt-1">Success Rate (%)</p></div><div class="stat-card p-4 rounded-lg zoom-in"><div class="counter-number" data-target="30">0</div><p class="text-gray-500 text-sm mt-1">Days Avg. Timeline</p></div><div class="stat-card p-4 rounded-lg zoom-in"><div class="counter-number" data-target="50">0</div><p class="text-gray-500 text-sm mt-1">Insurance Partners</p></div></div></div></section>
+
+  <section id="whyus" class="section-padding bg-white"><div class="container mx-auto px-6 lg:px-12"><div class="grid md:grid-cols-2 gap-12 items-center"><div class="fade-right"><h2 class="text-2xl font-bold">Why Healthcare Providers Choose <span class="gradient-text">Quad Solutions</span></h2><p class="text-gray-600 mt-3 leading-relaxed text-sm">We combine industry expertise with personalized support to get you credentialed quickly and correctly the first time.</p><div class="mt-6 space-y-3"><div class="flex gap-3"><i class="fas fa-check-circle text-teal-600 mt-1"></i><div><h4 class="font-semibold">98% First-Time Approval Rate</h4><p class="text-gray-500 text-sm">Our meticulous process ensures minimal rejections.</p></div></div><div class="flex gap-3"><i class="fas fa-clock text-teal-600 mt-1"></i><div><h4 class="font-semibold">30-Day Average Turnaround</h4><p class="text-gray-500 text-sm">Get in-network and start billing faster.</p></div></div><div class="flex gap-3"><i class="fas fa-headset text-teal-600 mt-1"></i><div><h4 class="font-semibold">Dedicated Support Team</h4><p class="text-gray-500 text-sm">Personal account manager for every provider.</p></div></div></div></div><div class="fade-right" id="stack-slider"><div class="stack-wrapper" id="stackWrapper"><div class="stack-panel active" data-index="0"><img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Provider Credentialing"><div class="overlay"><span><i class="fas fa-id-card mr-1"></i> Provider Credentialing</span></div></div><div class="stack-panel" data-index="1"><img src="https://images.pexels.com/photos/4427623/pexels-photo-4427623.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Insurance Enrollment"><div class="overlay"><span><i class="fas fa-file-invoice-dollar mr-1"></i> Insurance Enrollment</span></div></div><div class="stack-panel" data-index="2"><img src="https://images.pexels.com/photos/4021779/pexels-photo-4021779.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Medical Billing"><div class="overlay"><span><i class="fas fa-chart-line mr-1"></i> Medical Billing Support</span></div></div><div class="stack-panel" data-index="3"><img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Compliance"><div class="overlay"><span><i class="fas fa-gavel mr-1"></i> Compliance & Documentation</span></div></div><div class="stack-panel" data-index="4"><img src="https://images.pexels.com/photos/4031822/pexels-photo-4031822.jpeg?auto=compress&cs=tinysrgb&w=500" alt="CAQH Management"><div class="overlay"><span><i class="fas fa-database mr-1"></i> CAQH Management</span></div></div></div></div></div></div></section>
+
+  <section id="testimonials" class="section-padding bg-gray-50"><div class="container mx-auto px-6 lg:px-12"><div class="text-center max-w-2xl mx-auto mb-10"><span class="text-teal-600 font-semibold text-xs uppercase">Testimonials</span><h2 class="text-3xl lg:text-4xl font-bold mt-2 fade-up">What Our <span class="gradient-text">Clients Say</span></h2></div><div class="grid md:grid-cols-3 gap-6"><div class="testimonial-card p-5 rounded-xl shadow-sm fade-left"><i class="fas fa-quote-left text-teal-400 text-xl"></i><p class="mt-2 text-gray-600 text-sm">"Quad Solutions got me credentialed with 5 major payers in under 45 days. Their team is responsive and professional."</p><h4 class="font-bold mt-3 text-sm">Dr. Sarah Johnson</h4><p class="text-xs text-gray-500">Family Medicine</p><div class="flex mt-1 text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div><div class="testimonial-card p-5 rounded-xl shadow-sm fade-up"><i class="fas fa-quote-left text-teal-400 text-xl"></i><p class="mt-2 text-gray-600 text-sm">"The CAQH management service alone saved our practice countless hours. Highly recommend!"</p><h4 class="font-bold mt-3 text-sm">Michael Chen</h4><p class="text-xs text-gray-500">Practice Administrator</p><div class="flex mt-1 text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div><div class="testimonial-card p-5 rounded-xl shadow-sm fade-right"><i class="fas fa-quote-left text-teal-400 text-xl"></i><p class="mt-2 text-gray-600 text-sm">"From credentialing to billing support, Quad Solutions is a true partner. Their compliance expertise is unmatched."</p><h4 class="font-bold mt-3 text-sm">Dr. Emily Rodriguez</h4><p class="text-xs text-gray-500">Cardiology</p><div class="flex mt-1 text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><div class="text-center mt-8"><a href="testimonials.html" class="btn-outline px-6 py-2 rounded-full text-sm">View all testimonials →</a></div></div></section>
+
+  <section class="section-padding bg-teal-700 text-white"><div class="container mx-auto px-6 lg:px-12 max-w-3xl text-center"><h2 class="text-2xl lg:text-3xl font-bold fade-up">Ready to Get Credentialed?</h2><p class="text-teal-100 mt-2 mb-6 fade-up text-sm">Start your credentialing journey today. Our experts will contact you within 24 hours.</p><form id="leadForm" class="grid md:grid-cols-3 gap-3 fade-up"><input type="text" id="leadName" placeholder="Full Name" class="lead-input" required><input type="email" id="leadEmail" placeholder="Email Address" class="lead-input" required><input type="tel" id="leadPhone" placeholder="Phone Number" class="lead-input" required><button type="submit" class="lead-submit md:col-span-3">Get Free Consultation →</button><div id="leadStatus" class="text-teal-100 text-sm md:col-span-3"></div></form></div></section>
+</main>
+
+<footer class="bg-gray-900 text-gray-300 pt-10 pb-6"><div class="container mx-auto px-6 lg:px-12"><div class="grid md:grid-cols-4 gap-6"><div><h3 class="text-white text-xl font-bold"><span class="text-teal-400">Quad</span>Solutions</h3><p class="mt-1 text-xs">Medical credentialing experts helping providers get in-network faster.</p></div><div><h4 class="text-white font-semibold text-sm">Quick Links</h4><ul class="mt-2 space-y-1 text-xs"><li><a href="index.html" class="hover:text-teal-400">Home</a></li><li><a href="services.html" class="hover:text-teal-400">Services</a></li><li><a href="testimonials.html" class="hover:text-teal-400">Testimonials</a></li></ul></div><div><h4 class="text-white font-semibold text-sm">Resources</h4><ul class="mt-2 space-y-1 text-xs"><li><a href="contact.html" class="hover:text-teal-400">Contact</a></li><li><a href="faq.html" class="hover:text-teal-400">FAQ</a></li><li><a href="process.html" class="hover:text-teal-400">Process</a></li></ul></div><div><h4 class="text-white font-semibold text-sm">Contact</h4><p class="mt-1 text-xs"><i class="fas fa-envelope mr-1"></i> info@quadsolutions.com</p><p class="text-xs"><i class="fas fa-phone mr-1"></i> (888) 555-0123</p></div></div><div class="border-t border-gray-800 mt-6 pt-4 text-center text-xs">© 2025 Quad Solutions. All rights reserved. HIPAA Compliant.</div></div></footer>
+
+<script>
+  const toggleBtn = document.getElementById('menuToggle'), mobileMenu = document.getElementById('mobileMenu');
+  if(toggleBtn) toggleBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('.counter-number').forEach(counter => { const target = parseInt(counter.dataset.target); ScrollTrigger.create({ trigger: counter, start: "top 85%", once: true, onEnter: () => { let current = 0; const update = () => { if(current <= target) { counter.innerText = current; current += Math.ceil(target/40); setTimeout(update, 20); } else counter.innerText = target; }; update(); } }); });
+  const fadeElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .zoom-in');
+  const fadeObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+  fadeElements.forEach(el => fadeObserver.observe(el));
+  document.getElementById('leadForm')?.addEventListener('submit', (e) => { e.preventDefault(); document.getElementById('leadStatus').innerHTML = '✓ Thank you! A credentialing specialist will contact you within 24 hours.'; e.target.reset(); setTimeout(() => document.getElementById('leadStatus').innerHTML = '', 5000); });
+  const panels = document.querySelectorAll('.stack-panel'); let currentIndex = 0, autoRotateInterval, isHovering = false;
+  function activatePanel(index) { panels.forEach((panel, i) => { if(i === index) panel.classList.add('active'); else panel.classList.remove('active'); }); }
+  function startAutoRotate() { if(autoRotateInterval) clearInterval(autoRotateInterval); autoRotateInterval = setInterval(() => { if(!isHovering) { currentIndex = (currentIndex + 1) % panels.length; activatePanel(currentIndex); } }, 3000); }
+  panels.forEach((panel, index) => { panel.addEventListener('click', () => { currentIndex = index; activatePanel(currentIndex); startAutoRotate(); }); panel.addEventListener('mouseenter', () => { isHovering = true; }); panel.addEventListener('mouseleave', () => { isHovering = false; }); });
+  activatePanel(0); startAutoRotate();
+  const heroIcons = [{ icon: "fas fa-stethoscope", color: "#0891b2" }, { icon: "fas fa-id-card", color: "#0d9488" }, { icon: "fas fa-file-invoice-dollar", color: "#059669" }, { icon: "fas fa-chart-line", color: "#2563eb" }, { icon: "fas fa-gavel", color: "#7c3aed" }, { icon: "fas fa-database", color: "#dc2626" }, { icon: "fas fa-shield-alt", color: "#0284c7" }, { icon: "fas fa-clock", color: "#ea580c" }, { icon: "fas fa-check-circle", color: "#16a34a" }, { icon: "fas fa-headset", color: "#4f46e5" }, { icon: "fas fa-laptop-medical", color: "#0891b2" }, { icon: "fas fa-user-md", color: "#2563eb" }, { icon: "fas fa-hospital", color: "#7c3aed" }, { icon: "fas fa-heartbeat", color: "#e11d48" }, { icon: "fas fa-clinic-medical", color: "#0284c7" }, { icon: "fas fa-prescription-bottle", color: "#059669" }, { icon: "fas fa-ambulance", color: "#dc2626" }, { icon: "fas fa-notes-medical", color: "#0d9488" }];
+  const heroSphere = document.getElementById("heroSphere"); const radiusVal = 145; let rotY = 0, activeHeroGlobe = false, mouseX = 0; const globeIcons = [];
+  heroIcons.forEach((item, i) => { const el = document.createElement("i"); el.className = "globe-icon " + item.icon; el.style.color = item.color; const phi = Math.acos(-1 + (2 * i) / heroIcons.length); const theta = Math.sqrt(heroIcons.length * Math.PI) * phi; const x = radiusVal * Math.cos(theta) * Math.sin(phi); const y = radiusVal * Math.sin(theta) * Math.sin(phi); const z = radiusVal * Math.cos(phi); el.dataset.x = x; el.dataset.y = y; el.dataset.z = z; heroSphere.appendChild(el); globeIcons.push(el); });
+  const heroGlobeObserver = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { heroSphere.classList.add("active"); activeHeroGlobe = true; } }); }, { threshold: 0.3 });
+  heroGlobeObserver.observe(heroSphere);
+  window.addEventListener("mousemove", (e) => { const centerX = window.innerWidth / 2; mouseX = (e.clientX - centerX) * 0.0003; });
+  function updateIconOpacityBasedOnZ() { globeIcons.forEach(icon => { const z = parseFloat(icon.dataset.z); const rotationRad = rotY * (Math.PI / 180); const rotatedZ = z * Math.cos(rotationRad) - parseFloat(icon.dataset.x) * Math.sin(rotationRad); const normalizedZ = rotatedZ / radiusVal; let opacity = 0.35 + (normalizedZ + 1) / 2 * 0.65; opacity = Math.min(0.98, Math.max(0.3, opacity)); icon.style.opacity = opacity; }); }
+  function animateHeroGlobe() { if (activeHeroGlobe) { rotY += 0.4; rotY += mouseX; } heroSphere.style.transform = `rotateY(${rotY}deg) scale(1)`; globeIcons.forEach(el => { const x = parseFloat(el.dataset.x), y = parseFloat(el.dataset.y), z = parseFloat(el.dataset.z); el.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`; }); updateIconOpacityBasedOnZ(); requestAnimationFrame(animateHeroGlobe); }
+  animateHeroGlobe();
+</script>
+</body>
+</html>
